@@ -1,0 +1,72 @@
+<div class="min-h-screen flex flex-col items-center justify-center mx-4">
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center">
+    <span class="paw-book-logo text-4xl mb-6">PawBook</span>
+    <h2 class="text-2xl font-bold text-center mb-1">Create a new account</h2>
+    <div class="text-center mb-6">It's quick and easy.</div>
+    <form [formGroup]="registerForm()" (ngSubmit)="onSubmit()" class="w-full flex flex-col gap-4">
+      <div class="flex flex-col sm:flex-row gap-4">
+        <div class="w-full">
+          <input matInput formControlName="firstName" type="text" placeholder="First name"
+            class="w-full rounded border px-3 py-2" />
+          <div *ngIf="registerForm().get('firstName')?.touched && registerForm().get('firstName')?.invalid"
+            class="text-xs text-red-500 mt-1">
+            First name is required
+          </div>
+        </div>
+        <div class="w-full">
+          <input matInput formControlName="lastName" type="text" placeholder="Surname"
+            class="w-full rounded border px-3 py-2" />
+          <div *ngIf="registerForm().get('lastName')?.touched && registerForm().get('lastName')?.invalid"
+            class="text-xs text-red-500 mt-1">
+            Surname is required
+          </div>
+        </div>
+      </div>
+      <div>
+        <input matInput formControlName="email" type="email" placeholder="Email address"
+          class="w-full rounded border px-3 py-2" />
+        <div *ngIf="registerForm().get('email')?.touched && registerForm().get('email')?.hasError('required')"
+          class="text-xs text-red-500 mt-1">
+          Email is required
+        </div>
+        <div *ngIf="registerForm().get('email')?.touched && registerForm().get('email')?.hasError('email')"
+          class="text-xs text-red-500 mt-1">
+          Please enter a valid email address
+        </div>
+      </div>
+      <div>
+        <input matInput formControlName="password" type="password" placeholder="New password"
+          class="w-full rounded border px-3 py-2" />
+        <div *ngIf="registerForm().get('password')?.touched && registerForm().get('password')?.hasError('required')"
+          class="text-xs text-red-500 mt-1">
+          Password is required
+        </div>
+        <div *ngIf="registerForm().get('password')?.touched && registerForm().get('password')?.hasError('minlength')"
+          class="text-xs text-red-500 mt-1">
+          Password must be at least 8 characters
+        </div>
+      </div>
+      <div>
+        <input matInput formControlName="confirmPassword" type="password" placeholder="Confirm password"
+          class="w-full rounded border px-3 py-2" />
+        <div
+          *ngIf="registerForm().get('confirmPassword')?.touched && registerForm().get('confirmPassword')?.hasError('required')"
+          class="text-xs text-red-500 mt-1">
+          Please confirm your password
+        </div>
+        <div *ngIf="registerForm().errors?.['passwordMismatch'] && registerForm().get('confirmPassword')?.touched"
+          class="text-xs text-red-500 mt-1">
+          Passwords do not match
+        </div>
+      </div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="registerForm().invalid || isLoading()"
+        class="w-full rounded-lg py-2 font-semibold mt-2">
+        Register
+      </button>
+    </form>
+    <div class="w-full flex items-center justify-center mt-6 border rounded-lg py-4 bg-white">
+      <span class="text-sm">Already have an account?</span>
+      <a routerLink="/auth/login" class="ml-1 text-blue-600 font-semibold text-sm">Log in</a>
+    </div>
+  </div>
+</div>

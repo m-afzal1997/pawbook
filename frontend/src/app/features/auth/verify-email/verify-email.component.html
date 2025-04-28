@@ -1,0 +1,29 @@
+<div class="min-h-screen flex flex-col items-center justify-center mx-4">
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center">
+    <div class="flex items-center w-full mb-4">
+      <button mat-icon-button (click)="goBack()" class="mr-2">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <div class="flex-1 text-center">
+        <span class="paw-book-logo text-4xl">PawBook</span>
+      </div>
+      <div style="width: 40px;"></div>
+    </div>
+    <h2 class="text-2xl font-bold text-center mb-2">Verify your email</h2>
+    <div class="text-center mb-6">Enter the 6-digit code sent to your email address.</div>
+    <form [formGroup]="verifyForm()" (ngSubmit)="onSubmit()" class="w-full flex flex-col gap-4">
+      <input matInput formControlName="pin" maxlength="6" type="text" inputmode="numeric" pattern="[0-9]*"
+        class="w-full rounded border px-4 py-3 text-center tracking-widest text-2xl" placeholder="------" />
+      <button mat-raised-button color="primary" type="submit" [disabled]="verifyForm().invalid || loading()"
+        class="w-full rounded-lg py-2 font-semibold mt-2">
+        Verify
+      </button>
+    </form>
+    <div class="w-full flex items-center justify-center mt-4">
+      <button type="button" (click)="resendPin()" [disabled]="resending"
+        class="text-blue-600 font-semibold text-sm hover:underline">
+        Resend code
+      </button>
+    </div>
+  </div>
+</div>
