@@ -1,0 +1,657 @@
+{
+	"id": "a3256039-87a1-48e5-ab05-03e6634e1301",
+	"name": "PawBook API Copy",
+	"timestamp": "2025-05-14T11:14:42.269Z",
+	"collection_id": "9807861-ccd9052a-81e1-4d69-aac2-d34d1dd8bde9",
+	"folder_id": 0,
+	"environment_id": "9807861-5c5f8bd2-92ce-4100-afb2-2620330bcdba",
+	"totalPass": 35,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-05-14T11:14:40.116Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9fb90bb5-1735-4c9a-8819-97e865202685",
+			"name": "Register",
+			"url": "http://localhost:3000/api/auth/register",
+			"time": 802,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Response has verification message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has verification message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				802
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Response has verification message": true
+				}
+			]
+		},
+		{
+			"id": "3c1810ac-70b1-49c9-8eb4-eda4ba782244",
+			"name": "Verify PIN",
+			"url": "http://localhost:3000/api/auth/verify-pin",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Account verified message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Account verified message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Account verified message": true
+				}
+			]
+		},
+		{
+			"id": "2bef6cb5-3e45-4452-8ba5-aa681688496a",
+			"name": "Login",
+			"url": "http://localhost:3000/api/auth/login",
+			"time": 105,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has token and user data": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has token and user data": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				105
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has token and user data": true
+				}
+			]
+		},
+		{
+			"id": "e797029a-3a3c-4f56-9f8c-6dc787bbae8b",
+			"name": "Get Current User",
+			"url": "http://localhost:3000/api/users/me",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has user data": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has user data": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has user data": true
+				}
+			]
+		},
+		{
+			"id": "6173b0fa-86f8-4af9-81aa-66719b93fa70",
+			"name": "Get User Profile",
+			"url": "http://localhost:3000/api/users/1",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has user profile data": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has user profile data": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has user profile data": true
+				}
+			]
+		},
+		{
+			"id": "5e6c97fe-ce19-4bb9-b5eb-f1d1fab2b06e",
+			"name": "Update Profile",
+			"url": "http://localhost:3000/api/users/me",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Profile updated successfully": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Profile updated successfully": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Profile updated successfully": true
+				}
+			]
+		},
+		{
+			"id": "3dd5eac5-18d4-4867-a548-0d597e7c4abe",
+			"name": "Logout",
+			"url": "http://localhost:3000/api/auth/logout",
+			"time": 2,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Logout message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Logout message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Logout message": true
+				}
+			]
+		},
+		{
+			"id": "9ce4430e-0467-4c45-8d5e-50874ba18f52",
+			"name": "Get All Posts",
+			"url": "http://localhost:3000/api/posts",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has posts array": true,
+				"Each post has required fields": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has posts array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Each post has required fields": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has posts array": true,
+					"Each post has required fields": true
+				}
+			]
+		},
+		{
+			"id": "318f6d1f-ec53-430a-9631-859ed643d230",
+			"name": "Get My Posts",
+			"url": "http://localhost:3000/api/posts/me",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response has posts array": true,
+				"All posts belong to current user": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has posts array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"All posts belong to current user": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response has posts array": true,
+					"All posts belong to current user": true
+				}
+			]
+		},
+		{
+			"id": "c66533d3-a5dd-43f2-8a3c-66439a0ba8d8",
+			"name": "Create Post",
+			"url": "http://localhost:3000/api/posts",
+			"time": 5,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Post created successfully": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Post created successfully": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Post created successfully": true
+				}
+			]
+		},
+		{
+			"id": "4e678d46-ffb7-46c2-9bcf-c56e9d976957",
+			"name": "Update Post",
+			"url": "http://localhost:3000/api/posts/1",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Post updated successfully": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Post updated successfully": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Post updated successfully": true
+				}
+			]
+		},
+		{
+			"id": "9c6becf2-d38c-41bc-bc0d-198af30cdec4",
+			"name": "Like Post",
+			"url": "http://localhost:3000/api/posts/1/like",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Post liked successfully": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Post liked successfully": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Post liked successfully": true
+				}
+			]
+		},
+		{
+			"id": "86e51933-a55e-4da5-a5e2-1a7432f09bd0",
+			"name": "Unlike Post",
+			"url": "http://localhost:3000/api/posts/1/like",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Post unliked successfully": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Post unliked successfully": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Post unliked successfully": true
+				}
+			]
+		},
+		{
+			"id": "6e01b41d-fe89-4564-aea4-3b1ab60fd08d",
+			"name": "Delete Post",
+			"url": "http://localhost:3000/api/posts/1",
+			"time": 4,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 204": true
+				}
+			]
+		},
+		{
+			"id": "1e4860a7-4587-493d-b196-7137c19f46a1",
+			"name": "Request Password Reset",
+			"url": "http://localhost:3000/api/auth/request-reset",
+			"time": 598,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Reset message received": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Reset message received": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				598
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Reset message received": true
+				}
+			]
+		},
+		{
+			"id": "f6236cf8-30f2-49c9-a296-95378e3d8304",
+			"name": "Verify Reset PIN",
+			"url": "http://localhost:3000/api/auth/verify-reset-pin",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Pin verified message": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Pin verified message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Pin verified message": true
+				}
+			]
+		},
+		{
+			"id": "ff07daeb-ee36-4338-a4dd-2553bf6a6e16",
+			"name": "Reset Password",
+			"url": "http://localhost:3000/api/auth/reset-password",
+			"time": 104,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Password reset successful": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Password reset successful": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				104
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Password reset successful": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1679,
+	"collection": {
+		"requests": [
+			{
+				"id": "9fb90bb5-1735-4c9a-8819-97e865202685",
+				"method": "POST"
+			},
+			{
+				"id": "3c1810ac-70b1-49c9-8eb4-eda4ba782244",
+				"method": "POST"
+			},
+			{
+				"id": "2bef6cb5-3e45-4452-8ba5-aa681688496a",
+				"method": "POST"
+			},
+			{
+				"id": "e797029a-3a3c-4f56-9f8c-6dc787bbae8b",
+				"method": "GET"
+			},
+			{
+				"id": "6173b0fa-86f8-4af9-81aa-66719b93fa70",
+				"method": "GET"
+			},
+			{
+				"id": "5e6c97fe-ce19-4bb9-b5eb-f1d1fab2b06e",
+				"method": "PUT"
+			},
+			{
+				"id": "3dd5eac5-18d4-4867-a548-0d597e7c4abe",
+				"method": "POST"
+			},
+			{
+				"id": "9ce4430e-0467-4c45-8d5e-50874ba18f52",
+				"method": "GET"
+			},
+			{
+				"id": "318f6d1f-ec53-430a-9631-859ed643d230",
+				"method": "GET"
+			},
+			{
+				"id": "c66533d3-a5dd-43f2-8a3c-66439a0ba8d8",
+				"method": "POST"
+			},
+			{
+				"id": "4e678d46-ffb7-46c2-9bcf-c56e9d976957",
+				"method": "PUT"
+			},
+			{
+				"id": "9c6becf2-d38c-41bc-bc0d-198af30cdec4",
+				"method": "POST"
+			},
+			{
+				"id": "86e51933-a55e-4da5-a5e2-1a7432f09bd0",
+				"method": "DELETE"
+			},
+			{
+				"id": "6e01b41d-fe89-4564-aea4-3b1ab60fd08d",
+				"method": "DELETE"
+			},
+			{
+				"id": "1e4860a7-4587-493d-b196-7137c19f46a1",
+				"method": "POST"
+			},
+			{
+				"id": "f6236cf8-30f2-49c9-a296-95378e3d8304",
+				"method": "POST"
+			},
+			{
+				"id": "ff07daeb-ee36-4338-a4dd-2553bf6a6e16",
+				"method": "POST"
+			}
+		]
+	}
+}
