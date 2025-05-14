@@ -5,8 +5,7 @@ import { EMPTY } from 'rxjs';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
-  
-  // Don't add token for auth endpoints
+
   if (req.url.includes('/api/login') || req.url.includes('/api/register')) {
     return next(req);
   }

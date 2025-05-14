@@ -47,9 +47,9 @@ export class PostsComponent extends BaseComponent implements OnInit {
   public ngOnInit(): void {
     this.userService.currentUser$.pipe(takeUntil(this.destroy$)).subscribe({
       next: (user) => {
-        if(user) {
+        if (user) {
           this.currentUser = user;
-          if(this.isProfile()) {
+          if (this.isProfile()) {
             this.fetchMyPosts();
           } else {
             this.fetchPosts();

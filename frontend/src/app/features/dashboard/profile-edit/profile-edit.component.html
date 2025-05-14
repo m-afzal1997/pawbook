@@ -1,14 +1,8 @@
 <pb-navbar></pb-navbar>
 <div class="flex flex-col items-center w-full max-w-xl mx-auto p-8 pt-20">
-  <!-- Profile Picture Card -->
   <div class="w-full flex flex-col items-center bg-gray-100 rounded-2xl p-6 mb-6">
-    <img
-      #profilePicture
-      [src]="profilePicturePreview()"
-      (error)="onImgError(profilePicture)"
-      alt="Profile Picture"
-      class="rounded-full object-cover border-2 w-24 h-24 sm:w-32 sm:h-32 mb-2"
-    />
+    <img #profilePicture [src]="profilePicturePreview()" (error)="onImgError(profilePicture)" alt="Profile Picture"
+      class="rounded-full object-cover border-2 w-24 h-24 sm:w-32 sm:h-32 mb-2" />
     <label class="text-blue-600 font-semibold cursor-pointer text-sm">
       <input type="file" accept="image/*" (change)="onFileSelected($event)" class="hidden" />
       Change photo
@@ -16,24 +10,18 @@
   </div>
 
   <form [formGroup]="profileForm()" (ngSubmit)="onSubmit()" class="w-full flex flex-col gap-6">
-    <!-- Name -->
     <div>
       <label class="block font-bold mb-1">Name</label>
-      <input matInput formControlName="name" maxlength="50"
-        class="w-full rounded-xl border px-4 py-3"
+      <input matInput formControlName="name" maxlength="50" class="w-full rounded-xl border px-4 py-3"
         placeholder="Name" />
     </div>
-    <!-- Bio -->
     <div>
       <label class="block font-bold mb-1">Bio</label>
-      <textarea matInput formControlName="bio" maxlength="150"
-        class="w-full rounded-xl border px-4 py-3 resize-none"
+      <textarea matInput formControlName="bio" maxlength="150" class="w-full rounded-xl border px-4 py-3 resize-none"
         rows="3" placeholder="Bio"></textarea>
       <div class="text-xs text-gray-400 text-right mt-1">{{ profileForm().get('bio')?.value?.length || 0 }} / 150</div>
     </div>
-    <!-- Save Button -->
-    <button mat-raised-button color="primary" type="submit"
-      [disabled]="profileForm().invalid"
+    <button mat-raised-button color="primary" type="submit" [disabled]="profileForm().invalid"
       class="w-full rounded-xl py-3 font-semibold mt-2">
       Save
     </button>

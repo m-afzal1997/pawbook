@@ -19,7 +19,7 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<User | null>(null);
 
   private httpHandler: HttpBackend = inject(HttpBackend);
-  private httpClient: HttpClient =  new HttpClient(this.httpHandler);
+  private httpClient: HttpClient = new HttpClient(this.httpHandler);
   private router: Router = inject(Router);
   private snackbar: SnackbarService = inject(SnackbarService);
   public getToken(): string | null {
@@ -79,7 +79,7 @@ export class AuthService {
     });
 
     this.httpClient.post(`${environment.apiUrl}/auth/logout`, {}, { headers }).subscribe((response) => {
-      this.snackbar.success( 'Logged out successfully');
+      this.snackbar.success('Logged out successfully');
       this.removeToken();
 
       this.currentUserSubject.next(null);

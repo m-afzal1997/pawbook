@@ -1,5 +1,5 @@
-import {Subject} from 'rxjs';
-import {Component, OnDestroy} from '@angular/core';
+import { Subject } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   standalone: true,
@@ -15,5 +15,5 @@ export class BaseComponent implements OnDestroy {
     this.afterOnDestroy();
   }
 
-  protected afterOnDestroy(): void {} // override this in base class
+  protected afterOnDestroy(): void { } // override this in base class
 }

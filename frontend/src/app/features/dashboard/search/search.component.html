@@ -6,16 +6,13 @@
       <form class="w-full">
         <input
           class="w-full rounded-xl bg-gray-100 px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-primary-500 pr-10"
-          type="text"
-          [formControl]="searchControl"
-          [(ngModel)]="searchText"
-          placeholder="Search"
-        />
+          type="text" [formControl]="searchControl" [(ngModel)]="searchText" placeholder="Search" />
       </form>
-      <button *ngIf="searchText()" (click)="clearSearch()" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+      <button *ngIf="searchText()" (click)="clearSearch()"
+        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
         <mat-icon>close</mat-icon>
       </button>
     </div>
   </div>
   <pb-posts [searchText]="searchText()"></pb-posts>
-</div> 
+</div>

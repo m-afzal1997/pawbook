@@ -158,11 +158,11 @@ describe('LoginComponent', () => {
   }));
 
   it('should handle email verification required error', fakeAsync(() => {
-    const errorResponse = { 
-      error: { 
+    const errorResponse = {
+      error: {
         needsVerification: true,
-        message: 'Please verify your email' 
-      } 
+        message: 'Please verify your email'
+      }
     };
     authService.login.and.returnValue(throwError(() => errorResponse));
 

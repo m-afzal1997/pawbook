@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed, fakeAsync, tick, flushMicrotasks } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { PostsComponent } from './posts.component';
 import { PostService } from '../../../../core/services/post.service';
 import { UserService } from '../../../../core/services/user.service';
 import { SnackbarService } from '../../../../core/services/snackbar.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { of, throwError, timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Post } from '../../../../core/models/post.model';
@@ -130,10 +130,10 @@ describe('PostsComponent', () => {
     it('should like a post', fakeAsync(() => {
       const updatedPost = { ...mockPosts[0], is_liked: true, likes_count: 1 };
       postService.likePost.and.returnValue(of(updatedPost));
-      
+
       component.onLike(mockPosts[0]);
       tick();
-      
+
       expect(postService.likePost).toHaveBeenCalledWith(mockPosts[0].id);
       expect(component.posts()[0].is_liked).toBeTrue();
       expect(component.posts()[0].likes_count).toBe(1);
@@ -142,10 +142,10 @@ describe('PostsComponent', () => {
     it('should unlike a post', fakeAsync(() => {
       const updatedPost = { ...mockPosts[1], is_liked: false, likes_count: 0 };
       postService.unlikePost.and.returnValue(of(updatedPost));
-      
+
       component.onLike(mockPosts[1]);
       tick();
-      
+
       expect(postService.unlikePost).toHaveBeenCalledWith(mockPosts[1].id);
       expect(component.posts()[1].is_liked).toBeFalse();
       expect(component.posts()[1].likes_count).toBe(0);
@@ -219,10 +219,10 @@ describe('PostsComponent', () => {
           map(() => ({ posts: [] }))
         )
       );
-      
+
       fixture.detectChanges();
       expect(component.loading()).toBeTrue();
-      
+
       tick(100);
       fixture.detectChanges();
       expect(component.loading()).toBeFalse();
@@ -232,7 +232,7 @@ describe('PostsComponent', () => {
       postService.getPosts.and.returnValue(of({ posts: [] }));
       fixture.detectChanges();
       tick();
-      
+
       const compiled = fixture.nativeElement as HTMLElement;
       expect(compiled.querySelector('mat-icon')?.textContent).toContain('photo_camera');
       expect(compiled.querySelector('h3')?.textContent).toContain('No Posts Yet');
@@ -242,7 +242,7 @@ describe('PostsComponent', () => {
       postService.getPosts.and.returnValue(of({ posts: mockPosts }));
       fixture.detectChanges();
       tick();
-      
+
       const compiled = fixture.nativeElement as HTMLElement;
       const postElements = compiled.querySelectorAll('article');
       expect(postElements.length).toBe(2);
@@ -251,7 +251,7 @@ describe('PostsComponent', () => {
 });
 
 class MockDialog {
-  constructor(private result: any) {}
+  constructor(private result: any) { }
   open() {
     return {
       afterClosed: () => of(this.result)

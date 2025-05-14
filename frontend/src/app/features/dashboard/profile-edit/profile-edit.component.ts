@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, WritableSignal   } from '@angular/core';
+import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,16 +29,16 @@ import { SnackbarService } from '../../../core/services/snackbar.service';
 export class ProfileEditComponent extends BaseComponent implements OnInit {
   private fb = inject(FormBuilder);
   public profileForm: WritableSignal<FormGroup> = signal(this.fb.group({
-      name: ['', Validators.required],
-      bio: ['']
-    }));
+    name: ['', Validators.required],
+    bio: ['']
+  }));
   public profilePicturePreview: WritableSignal<string | null> = signal(null);
   public selectedFile: WritableSignal<File | null> = signal(null);
   public userEmail: string = '';
   private userService = inject(UserService);
   private snackBar = inject(SnackbarService);
   private router = inject(Router);
-  
+
 
   public ngOnInit(): void {
     this.subscribeToCurrentUser();
@@ -81,7 +81,7 @@ export class ProfileEditComponent extends BaseComponent implements OnInit {
 
   private subscribeToCurrentUser(): void {
     this.userService.currentUser$.pipe(takeUntil(this.destroy$)).subscribe((user) => {
-      if(user) {
+      if (user) {
         this.profileForm().patchValue({
           name: user.name,
           bio: user.bio

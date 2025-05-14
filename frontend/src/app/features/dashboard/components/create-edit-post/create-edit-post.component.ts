@@ -44,7 +44,7 @@ export class CreateEditPostComponent implements OnInit {
 
   public ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.postId.set(  params.get('id'));
+      this.postId.set(params.get('id'));
       this.isEdit.set(!!this.postId());
       if (this.isEdit() && this.postId()) {
         this.loading.set(true);
@@ -73,13 +73,8 @@ export class CreateEditPostComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0];
     if (file) {
-      // Reset the file input to allow selecting the same file again
       input.value = '';
-      
-      // Update form control
       this.form().patchValue({ image: file });
-      
-      // Create preview
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview.set(reader.result);

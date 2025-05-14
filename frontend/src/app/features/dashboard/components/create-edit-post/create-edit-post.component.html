@@ -5,14 +5,15 @@
       <span>{{ isEdit() ? 'Edit Post' : 'Create Post' }}</span>
     </h2>
     <form [formGroup]="form()" (ngSubmit)="onSubmit()" class="w-full flex flex-col gap-6">
-      <!-- Image Upload & Preview -->
       <div class="flex flex-col items-center gap-2">
         <label class="w-full flex flex-col items-center cursor-pointer">
           <span class="text-sm mb-2">{{ isEdit() ? 'Change Image' : 'Upload Image' }}</span>
           <input #fileInput type="file" accept="image/*" (change)="onImageChange($event)" class="hidden" />
-          <div class="relative w-48 h-48 p-4 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden border hover:bg-gray-50">
+          <div
+            class="relative w-48 h-48 p-4 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden border hover:bg-gray-50">
             <ng-container *ngIf="imagePreview(); else placeholder">
-              <img [src]="imagePreview()" alt="Preview" class="object-contain w-full h-full" (error)="onImgError($event)" />
+              <img [src]="imagePreview()" alt="Preview" class="object-contain w-full h-full"
+                (error)="onImgError($event)" />
             </ng-container>
             <ng-template #placeholder>
               <span class="text-gray-400 text-6xl"><mat-icon>image</mat-icon></span>
@@ -34,12 +35,9 @@
           <div class="text-xs text-gray-400 ml-auto">{{ form().get('caption')?.value?.length || 0 }}/2200</div>
         </div>
       </div>
-      
-      <!-- Submit Button -->
-      <button mat-raised-button color="primary" type="submit"
-        [disabled]="form().invalid || loading()"
+      <button mat-raised-button color="primary" type="submit" [disabled]="form().invalid || loading()"
         class="w-full rounded-lg py-2 font-semibold mt-2">
-          {{ isEdit() ? 'Update Post' : 'Post' }}
+        {{ isEdit() ? 'Update Post' : 'Post' }}
       </button>
     </form>
   </div>

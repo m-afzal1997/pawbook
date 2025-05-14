@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-verify-email',
   standalone: true,
-  imports: [    CommonModule,
+  imports: [CommonModule,
     ReactiveFormsModule,
     RouterModule,
     MatFormFieldModule,

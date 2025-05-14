@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed, fakeAsync, tick, flushMicrotasks } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
 import { AuthService } from '../../../../core/services/auth.service';
 import { UserService } from '../../../../core/services/user.service';
 import { User } from '../../../../core/models/user.model';
-import { ActionConfirmComponent } from '../action-confirm/action-confirm.component';
 import { NavbarComponent } from './navbar.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,7 +19,7 @@ describe('NavbarComponent', () => {
   const mockUser: User = { id: 1, email: 'test@example.com', name: 'Test User', created_at: new Date().toISOString(), updated_at: new Date().toISOString() };
 
   class MockDialog {
-    constructor(private result: any) {}
+    constructor(private result: any) { }
     open() { return { afterClosed: () => of(this.result) }; }
   }
 
@@ -29,11 +28,11 @@ describe('NavbarComponent', () => {
     const userServiceSpy = jasmine.createSpyObj('UserService', ['getCurrentUser'], { currentUser$: of(mockUser) });
     const dialogSpy = jasmine.createSpyObj('MatDialog', ['open']);
     await TestBed.configureTestingModule({
-      imports: [ NavbarComponent, RouterTestingModule, MatDialogModule, NoopAnimationsModule ],
+      imports: [NavbarComponent, RouterTestingModule, MatDialogModule, NoopAnimationsModule],
       providers: [
-         { provide: AuthService, useValue: authServiceSpy },
-         { provide: UserService, useValue: userServiceSpy },
-         { provide: MatDialog, useValue: dialogSpy }
+        { provide: AuthService, useValue: authServiceSpy },
+        { provide: UserService, useValue: userServiceSpy },
+        { provide: MatDialog, useValue: dialogSpy }
       ]
     }).compileComponents();
     fixture = TestBed.createComponent(NavbarComponent);

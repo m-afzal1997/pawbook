@@ -1,100 +1,78 @@
-<!-- Main Feed Container -->
-  <div class="w-full max-w-md md:max-w-lg lg:max-w-xl mx-auto flex-1 flex flex-col justify-start px-4 pt-4">
-    <!-- Loading State -->
-    @if (loading()) {
-      <div class="flex justify-center items-center min-h-[200px]">
-        <mat-spinner diameter="40"></mat-spinner>
-      </div>
-    }
+<div class="w-full max-w-md md:max-w-lg lg:max-w-xl mx-auto flex-1 flex flex-col justify-start px-4 pt-4">
+  @if (loading()) {
+  <div class="flex justify-center items-center min-h-[200px]">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+  }
 
-    <!-- Posts Feed -->
-    @if (!loading() && posts().length > 0) {
-      <div class="space-y-8">
-        @for (post of posts(); track trackByPostId) {
-          <!-- Post Card -->
-          <article class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden w-full max-w-md md:max-w-lg lg:max-w-xl mx-auto"
-                   style="max-height:calc(100vh-4rem);">
-            <!-- Post Header -->
-            <div class="p-4 flex items-center justify-between">
-              <div class="flex items-center space-x-3">
-                <img #avatarImg
-                     [src]="post.author_profile_picture"
-                     [alt]="post.author_name"
-                     (error)="onImgError(avatarImg)"
-                     class="w-10 h-10 rounded-full object-contain">
-                <div>
-                  <a [routerLink]="['/profile', post.user_id]" 
-                     class="font-semibold text-gray-900 hover:underline">
-                    {{ post.author_name }}
-                  </a>
-                  <p class="text-xs text-gray-500 ">{{ post.created_at | timeAgo }}</p>
-                </div>
-              </div>
-
-              <!-- Post Menu -->
-              @if (canEditOrDelete(post)) {
-                <button mat-icon-button [matMenuTriggerFor]="menu" class="text-gray-500 hover:text-gray-700">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item  routerLink="/dashboard/edit-post/{{post.id}}">
-                    <mat-icon>edit</mat-icon>
-                    <span>Edit</span>
-                  </button>
-                  <button mat-menu-item (click)="onDelete(post)">
-                    <mat-icon class="text-red-500">delete</mat-icon>
-                    <span class="text-red-500">Delete</span>
-                  </button>
-                </mat-menu>
-              }
-            </div>
-           <!-- Caption -->
-           <div class="space-y-1 px-4">
-            <p class="text-gray-900">
-              {{ post.content }}
-            </p>
+  @if (!loading() && posts().length > 0) {
+  <div class="space-y-8">
+    @for (post of posts(); track trackByPostId(i, post); let i = $index) {
+    <article
+      class="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden w-full max-w-md md:max-w-lg lg:max-w-xl mx-auto"
+      style="max-height:calc(100vh-4rem);">
+      <div class="p-4 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <img #avatarImg [src]="post.author_profile_picture" [alt]="post.author_name" (error)="onImgError(avatarImg)"
+            class="w-10 h-10 rounded-full object-contain">
+          <div>
+            <a [routerLink]="['/profile', post.user_id]" class="font-semibold text-gray-900 hover:underline">
+              {{ post.author_name }}
+            </a>
+            <p class="text-xs text-gray-500 ">{{ post.created_at | timeAgo }}</p>
           </div>
-            <!-- Post Image -->
-            <div class="relative aspect-square bg-gray-100 p-4">
-              <img #postImg
-                   [src]="post.image" 
-                   [alt]="post.content"
-                   (error)="onImgError(postImg)"
-                   class="w-full h-full object-contain">
-            </div>
-
-            <!-- Post Actions -->
-            <div class="p-4">
-              <div class="flex items-center space-x-4 mb-3">
-                <button (click)="onLike(post)" 
-                        class="text-gray-700 hover:text-red-500 transition-colors">
-                  <mat-icon [class.text-red-500]="post.is_liked">
-                    {{ post.is_liked ? 'favorite' : 'favorite_border' }}
-                  </mat-icon>
-                </button>
-              </div>
-
-              <!-- Likes Count -->
-              @if (post.likes_count) {
-                <p class="font-semibold text-gray-900 mb-2">
-                  {{ post.likes_count }} {{ post.likes_count === 1 ? 'like' : 'likes' }}
-                </p>
-              }
-
-            </div>
-          </article>
+        </div>
+        @if (canEditOrDelete(post)) {
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="text-gray-500 hover:text-gray-700">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/dashboard/edit-post/{{post.id}}">
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item (click)="onDelete(post)">
+            <mat-icon class="text-red-500">delete</mat-icon>
+            <span class="text-red-500">Delete</span>
+          </button>
+        </mat-menu>
         }
       </div>
-    }
-
-    <!-- Empty State -->
-    @if (!loading() && posts().length === 0) {
-      <div class="text-center py-12">
-        <mat-icon class="text-gray-400 text-6xl mb-4 !w-auto !h-auto">photo_camera</mat-icon>
-        <h3 class="text-xl font-semibold text-gray-900 mb-2">No Posts Yet</h3>
-        <p class="text-gray-500">
-          {{ isProfile() ? "You haven't shared any posts yet." : "No posts to show." }}
+      <div class="space-y-1 px-4">
+        <p class="text-gray-900">
+          {{ post.content }}
         </p>
       </div>
+      <div class="relative aspect-square bg-gray-100 p-4">
+        <img #postImg [src]="post.image" [alt]="post.content" (error)="onImgError(postImg)"
+          class="w-full h-full object-contain">
+      </div>
+      <div class="p-4">
+        <div class="flex items-center space-x-4 mb-3">
+          <button (click)="onLike(post)" class="text-gray-700 hover:text-red-500 transition-colors">
+            <mat-icon [class.text-red-500]="post.is_liked">
+              {{ post.is_liked ? 'favorite' : 'favorite_border' }}
+            </mat-icon>
+          </button>
+        </div>
+        @if (post.likes_count) {
+        <p class="font-semibold text-gray-900 mb-2">
+          {{ post.likes_count }} {{ post.likes_count === 1 ? 'like' : 'likes' }}
+        </p>
+        }
+
+      </div>
+    </article>
     }
   </div>
+  }
+  @if (!loading() && posts().length === 0) {
+  <div class="text-center py-12">
+    <mat-icon class="text-gray-400 text-6xl mb-4 !w-auto !h-auto">photo_camera</mat-icon>
+    <h3 class="text-xl font-semibold text-gray-900 mb-2">No Posts Yet</h3>
+    <p class="text-gray-500">
+      {{ isProfile() ? "You haven't shared any posts yet." : "No posts to show." }}
+    </p>
+  </div>
+  }
+</div>

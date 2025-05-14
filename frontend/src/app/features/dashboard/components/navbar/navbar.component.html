@@ -1,6 +1,4 @@
-<!-- Sidebar for desktop -->
 <nav class="fixed top-0 left-0 h-full w-20 md:w-64 bg-white border-r z-50 hidden md:flex flex-col justify-between">
-  <!-- Top: Logo and nav -->
   <div>
     <div class="flex items-center h-16 px-4 border-b">
       <span class="paw-book-logo text-3xl md:text-4xl">PawBook</span>
@@ -26,16 +24,10 @@
       </li>
     </ul>
   </div>
-  <!-- Bottom: Profile and logout -->
   <div class="flex flex-col gap-2 mb-4">
     <a routerLink="/dashboard/profile" class="flex items-center gap-4 px-4 py-3 hover:bg-gray-100">
-      <img 
-        [src]="currentUser?.profile_picture || '/assets/default-avatar.png'" 
-        alt="Profile" 
-        class="w-8 h-8 rounded-full object-cover border"
-        #profileImg
-        (error)="onImgError(profileImg)"
-      >
+      <img [src]="currentUser?.profile_picture || '/assets/default-avatar.png'" alt="Profile"
+        class="w-8 h-8 rounded-full object-cover border" #profileImg (error)="onImgError(profileImg)">
       <span class="hidden md:inline">My Profile</span>
     </a>
 
@@ -46,13 +38,12 @@
   </div>
 </nav>
 
-<!-- Top header for mobile -->
 <header class="md:hidden fixed top-0 left-0 right-0 h-16 bg-white border-b flex items-center justify-center px-4 z-40">
   <span class="paw-book-logo text-3xl">PawBook</span>
 </header>
 
-<!-- Bottom nav for mobile -->
-<footer class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white border-t flex items-center justify-between px-4 z-40">
+<footer
+  class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-white border-t flex items-center justify-between px-4 z-40">
   <button mat-icon-button routerLink="/dashboard/home">
     <mat-icon>home</mat-icon>
   </button>
@@ -69,4 +60,3 @@
     <mat-icon>logout</mat-icon>
   </button>
 </footer>
-

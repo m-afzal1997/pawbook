@@ -54,7 +54,7 @@ describe('HomeComponent', () => {
       const compiled = fixture.nativeElement as HTMLElement;
       const container = compiled.querySelector('.py-20');
       const posts = container?.querySelector('pb-posts');
-      
+
       expect(container).toBeTruthy();
       expect(posts).toBeTruthy();
       expect(posts?.parentElement?.classList.contains('py-20')).toBeTruthy();
@@ -65,7 +65,7 @@ describe('HomeComponent', () => {
     it('should have the correct layout structure with proper spacing', () => {
       const compiled = fixture.nativeElement as HTMLElement;
       const container = compiled.querySelector('.py-20');
-      
+
       expect(container).toBeTruthy();
       // Verify the container has the correct padding classes
       expect(container?.classList.contains('py-20')).toBeTruthy();

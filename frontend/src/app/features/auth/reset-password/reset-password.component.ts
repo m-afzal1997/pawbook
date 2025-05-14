@@ -63,7 +63,7 @@ export class ResetPasswordComponent {
   }
 
   public goBack() {
-    if (this.step() != 'request') { 
+    if (this.step() != 'request') {
       this.step.set('request');
       return;
     }
