@@ -23,17 +23,11 @@ A simple login API built with Node.js and MySQL.
    ```bash
    npm install
    ```
-3. Create a MySQL database named `login_api`
-4. Create a `.env` file in the root directory with the following variables:
+3. Create a MySQL database named `pawbook` By running the command
+    ```bash
+   npm run init
    ```
-   PORT=3000
-   DB_HOST=localhost
-   DB_USER=your_mysql_username
-   DB_PASSWORD=your_mysql_password
-   DB_NAME=login_api
-   JWT_SECRET=your-secret-key
-   ```
-5. Start the server:
+4. Start the server:
    ```bash
    npm start
    ```
